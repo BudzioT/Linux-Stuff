@@ -1,0 +1,79 @@
+ssh bandit.labs.overthewire.org -p 2220 -l bandit
+
+0 -> 1:
+	Look at readme, 'cat' it
+
+	PASS: ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If
+1 -> 2:
+	'-' file, provide relative path to it './-'
+
+	PASS: 263JGJPfgU6LtdEvgfWU1XP5yac29mFx
+2 -> 3:
+	Spaces in a file name, use 'name'
+
+	PASS: MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx
+3 -> 4:
+	Move into another directory 'cd'
+
+	PASS: 2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ
+4 -> 5:
+	Only one file is readable
+	Use 'file' with wildflag '*' to view types
+
+	PASS: 4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw
+5 -> 6:
+	Find file with certain size, not executable, ASCII
+	'find' with flag '-size 1033c' and '-not -executable' is fine
+
+	PASS: HWasnPhtq9AVKe0dmk45nxy20cvUa6EG
+6 -> 7:
+	File in the entire server, with certain owner, group and size
+	Use 'find' with '-user', '-group', 'size', then cat the result
+	Get rid of errors by redirecting them to null '2> /dev/null'
+
+	PASS: morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj
+7 -> 8:
+	Password in a text file, next to 'millionth' word
+	Use 'grep'
+
+	PASS: dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc
+8 -> 9:
+	Lot of copies, only unique password is correct
+	Sort the file, use 'uniq' with flag '-u' to show unique entries
+
+	PASS: 4CKMh1JI91bUIZZPXDqGanal4xvAg0JM
+9 -> 10:
+	Password after several '=', one of the only readable strings
+	Look for readable strings 'strings' and then 'grep' it with '=='
+
+	PASS: FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey
+10 -> 11:
+	Base64 encoded file, decode with 'base 64 -d'
+
+	PASS: dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr
+11 -> 12:
+	Coded with ROT13, use 'tr' with rotation of 13
+	Argument ''A-Za-z' 'N-ZA-Mn-za-m'' push data.txt to it by '<'
+
+	PASS: 7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4
+
+12 -> 13:
+	Compressed tons of times with gzip, bzip2, tar etc. as a hex dump
+	Unhex it by running 'xdd -d' then decompress them tons of times
+	Look at 'file' description to know the type of compression
+	(Or hex if you feel fancy, it doesn't work with tar though)
+
+	PASS: FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn
+13 -> 14:
+	Grab the ssh key from sshkey.private file and use it with 'ssh' command
+	So connect to overthewire bandit servers with '-i sshkey.private' flag
+
+	PASS: MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS
+14 -> 15:
+	Grab it from the file you didn't have previously access to
+	'/etc/bandit_pas/bandit14', connect by localhost on port 30000
+	so 'echo' the key out, then pipe it with 'nc localhost 30000'
+
+	PASS: 8xCjnmgoKbGLhHFAZlGE5Tmu4M2tKJQo
+15 -> 16:
+	

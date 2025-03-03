@@ -76,4 +76,52 @@ ssh bandit.labs.overthewire.org -p 2220 -l bandit
 
 	PASS: 8xCjnmgoKbGLhHFAZlGE5Tmu4M2tKJQo
 15 -> 16:
-	
+	Connect to localhost, port 30001 using SSL/TLS. Use 'openssl s_client'
+	Flags '-port and -host', then just enter the password
+
+	PASS: kSkvUpMQ7lBYyCM4GBPvCvT1BfWRy0Dx
+16 -> 17:
+	Password on one of open networks from 31000 to 320000
+	Use 'nmap' with '-p' flag to scan networks, then connect to the correct one
+	To connect use 'openssl s_client' like above.
+	You will get RSA KEY, use it on your machine, make the file have 400 permissions
+
+	PASS: Rsa key from the correct port, log in on local machine, not localhost
+17 -> 18:
+	Different line of 2 files is the password, just use 'diff'
+
+	PASS: x2gLTTjFwMOhQ8oWNbMN362QKxfRqGlO
+18 -> 19:
+	Edited default bash login to log you out, open 'ssh' in 'bash' mode
+	Then flag '--norc' which makes it not read the profile file
+
+	PASS: cGWpMaKXVwDUNgPAVJbWYuGHVn9zl3j8
+19 -> 20:
+	There is setuid alike binary, execute it with command as an Argument
+	So 'cat' with the password path
+
+	PASS: 0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO
+20 -> 21:
+	Password only visible after sending the previous one to some port and reading it
+	Use 'nc' with 'lvp' (l - listen, v - verbose, p - port) to listen on random port
+	Then send the old password and read it with the binary file
+	Split the terminal with tmux 'Ctrl+b !' and move with 'Ctrl+b Ctrl+o'
+
+	PASS: EeoULMCra2q0dSkYj561DX7s1CpBuOBt
+21 -> 22:
+	Use 'cat' on the cronjob, 'cat' the script and then go to that file, show it again
+
+	PASS: tRae0UfB9v0UzbCdn9cY0gQnds9GF58Q
+22 -> 23:
+	Password stored in encrypted folder name
+	Look at the script in /etc/cron,d, 'cat' it. It uses m5sum to hash a folder
+	Encrypt the same thing but with 'bandit23' string instead of 'bandit22'
+	Cat the result from /tmp/{result}
+
+	PASS: 0Zf11ioIjMVN551jX3CmStKLYqjk54Ga
+23 -> 24:
+	Cron job running every minute, executing and deleting scripts from certain directory
+	Make a temp dir, create a bash script to store password (as it is executed by bandit24)
+	'cat /etc/bandit_pass/bandit24 > /tmp/{your_folder}/{password_file}'
+
+	PASS: gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8

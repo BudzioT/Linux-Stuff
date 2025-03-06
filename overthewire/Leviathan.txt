@@ -1,0 +1,16 @@
+ssh leviathan.labs.overthewire.org -p 2223 -l leviathan0
+
+0 -> 1:
+    '.backup' folder, inside it a huge 'bookmarks.html' file
+    Search for 'password' in it
+
+    PASS: 3QJ3TgzHDq
+1 -> 2:
+    Some binary with password. Once entered, it will bring you to shell
+    Use 'ltrace' to see library calls, including 'strcmp'
+    It allows you to see input parameters, so you can grab real paassword
+    Use it and 'cat' your user password, stores in '/etc/[user]'
+
+    PASS: NsN1HwFoyN
+2 -> 3:
+    

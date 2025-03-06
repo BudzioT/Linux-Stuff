@@ -126,4 +126,52 @@ ssh bandit.labs.overthewire.org -p 2220 -l bandit
 
 	PASS: gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8
 24 -> 25:
+	Daoemon listening on some port, requires password from previous level and 4 digit pin
+	Write a simple bash script to make it work. For loop, while echoing it with password
+	Run it directly in terminal, pipe with 'nc'
+
+	PASS: iCi86ttT4KSNe1armKiwbQNmB3YJP3q4
+25 -> 26:
+	Default shell for the user keeps loggin you out, password in file accesible by bandit26
+	If you look at '/etc/passwd' you can see some different shell used, 'cat' it
+	It opens a file in 'more', which allows to edit, execute stuff if text is big enough
+	Make the terminal window small, go into 'vi' and execute ':set shell=/bin/bash'
+	Then go into shell ':shell' and 'cat' the password from '/etc/bandit_pass/bandit26'
 	
+	PASS: s0773xxkk0MXfdqOfPRVr9L3jJBUOgCZ
+26 -> 27:
+	Use the binary file, it allows you to execute commands as bandit27
+	Just show the password using 'cat'
+
+	PASS: upsNCc7vzaRDx6oZC6GiR6ERwe1MowGB
+27 -> 28:
+	Code in a repo accessible through SSH.
+	Clone the repo, use correct port 'git clone ssh://user@localhost:[port]/[repo]'
+	Then just 'cat' the readme
+
+	PASS: Yz9IpL0sBcCeuG7m9uQFt8ZNpS4HZRcN
+28 -> 29:
+	Clone repo, there is a file with credentials that are hidden
+	Look into commit history and use 'git show' with the correct hash
+	It will have the correct password
+
+	PASS: 4pT1t5DENaYuqnqvadYs1oE4QLCdjmJ7
+29 -> 30:
+	Clone repo, it seems like password isn't in production branch
+	Check all branches 'git branch -a', move into development one and grab password
+
+	PASS: qp30ex3VLz5MDG1n91YowTv4Q8l7CDZL
+30 -> 31:
+	Clone repo, look at tags 'git tag', then show secret one 'git show'
+
+	PASS: fb5S2xb7bRyFmAvQYQGEqsbhVyJqhnDy
+31 -> 32:
+	Clone repo, readme tells you to add specific file.
+	Force it with '-f' flag, push it onto github
+
+	PASS: 3O9RfhqyAlVBEZpVb6LYStshZoqoSx5K
+32 -> 33:
+	Interactive shell, turns every command to uppercase
+	Use '$0' to escape it, then just 'cat' your password
+
+	PASS: tQdtbs5D5i2vJwkO8mEyYEyTL8izoeJ0
